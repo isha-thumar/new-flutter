@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'REG.dart';
@@ -15,7 +14,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         backgroundColor: Colors.blueGrey,
@@ -36,40 +34,116 @@ class MyApp extends StatelessWidget {
 }
 
 class myapp extends StatefulWidget {
-  const myapp({Key? key}) : super(key: key);
+  myapp({Key? key}) : super(key: key);
+
 
   @override
   State<myapp> createState() => _myappState();
 }
 
 class _myappState extends State<myapp> {
+  String? email;
+  String? err;
+  TextEditingController password = TextEditingController();
+  bool pass = true;
+  TextEditingController emailcontrol = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        body: Container(decoration: BoxDecoration(gradient: LinearGradient(
+        body: Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
           colors: [
             Colors.cyan,
             Colors.indigo,
             Colors.black38,
           ],
-        ),),
-
-          child: Center(
-              child :Column(mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('login',style: TextStyle(fontSize: 40,color: Colors.white,fontWeight: FontWeight.w600)),
-                  SizedBox(height: 20,),
-                  TextField(style: TextStyle(color: Colors.white,fontSize: 20,),
-                    decoration: InputDecoration(prefixIcon: Icon(Icons.email,color: Colors.white,),labelText: 'email',hintText: 'email',hintStyle: TextStyle(color: Colors.white),border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),),
-                  SizedBox(height: 20,),
-                  TextField(style: TextStyle(color: Colors.white,fontSize: 20,),
-                    decoration: InputDecoration(prefixIcon: Icon(Icons.visibility,color: Colors.white,),labelText: 'password',hintText: 'password',hintStyle: TextStyle(color: Colors.white),border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),)
-                  ,SizedBox(height: 20,),ElevatedButton(style: ElevatedButton.styleFrom(primary: Colors.white),onPressed: () {
-                    Navigator.push(context,MaterialPageRoute(builder:(context) => reg(),));
-                  }, child: Text("registration"))
-                ],)
+        ),
+      ),
+      child: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('login',
+              style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600)),
+          SizedBox(
+            height: 20,
           ),
-        ));
+          TextField(
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
+           controller:emailcontrol ,
+            onChanged: (val) {
+              err = (val.length >= 10) ? 'please enter' : null;
+              setState(() {});
+            },
+            decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.email,
+                  color: Colors.white,
+                ),
+                labelText: 'email',
+                hintText: 'email',
+                hintStyle: TextStyle(color: Colors.white),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)))),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          TextField(
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
+            controller: password,
+            onChanged: (val){
+              err=(val.length>=10)?'only 10 character':null;
+              setState(() {
+
+              });
+            },
+            obscureText: pass,
+            decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.person,
+                  color: Colors.white,
+                ),
+                suffixIcon: IconButton(icon: Icon(Icons.visibility),
+                onPressed: (){
+                  setState(() {
+                    pass=!pass;
+                  });
+                },),
+                labelText: 'password',
+                hintText: 'password',
+                errorText: err,
+
+                hintStyle: TextStyle(color: Colors.white),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)))),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(primary: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => reg(),
+                    ));
+              },
+              child: Text("registration"))
+        ],
+      )),
+    ));
   }
 }
+
