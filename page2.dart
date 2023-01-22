@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
 
-class allpro extends StatelessWidget {
+class allpro extends StatefulWidget {
 
-Map data;
+Map? data;
 allpro(this.data);
+
+  @override
+  State<allpro> createState() => _allproState();
+}
+
+class _allproState extends State<allpro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(title: Text(data['title']),),
-      body: Center(child: Text(data['des']),
+      appBar:AppBar(title: Text(widget.data!['title']),),
+      body: Column(
+        children: [Padding(padding: EdgeInsets.all(20)),
+          Center(child: Text(widget.data!['des'],style: TextStyle(fontSize: 40,color: Colors.white,backgroundColor:Colors.black,  ),),
+          ),
+          SizedBox(height: 20,),
+          Container(decoration:BoxDecoration(border: Border.all(color: Colors.black),shape: BoxShape.rectangle),child:Image(image: NetworkImage(widget.data!['images']))),
+        Center(child: Container(child: Center(child: Text(widget.data!['info'],style: TextStyle(fontSize: 30),)),))
+        ],
       ),
     );
   }
-}
+
