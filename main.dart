@@ -54,9 +54,9 @@ class _myappState extends State<myapp> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.cyan,
-            Colors.indigo,
-            Colors.black38,
+          Colors.purpleAccent,
+            Colors.blue,
+            Colors.white,
           ],
         ),
       ),
@@ -140,7 +140,7 @@ class _myappState extends State<myapp> {
                       builder: (context) => reg(),
                     ));
               },
-              child: Text("registration"))
+              child: Text("registration",style: TextStyle(color:Colors.black54),))
         ],
       )),
     ));
