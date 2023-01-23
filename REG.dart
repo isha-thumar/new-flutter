@@ -14,9 +14,9 @@ class _regState extends State<reg> {
     return Scaffold(
         appBar: AppBar(),
         body:Container(height: 1000,decoration: BoxDecoration(gradient: LinearGradient(colors: [
-          Colors.cyan,
-          Colors.indigo,
-          Colors.black38,
+          Colors.purpleAccent,
+          Colors.blue,
+          Colors.white
 
         ],)),
           child: SingleChildScrollView(
