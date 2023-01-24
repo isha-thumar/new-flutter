@@ -53,13 +53,7 @@ class _myappState extends State<myapp> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-        body: Container(decoration: BoxDecoration(gradient: LinearGradient(
-          colors: [
-            Colors.purpleAccent,
-            Colors.blue,
-            Colors.white,
-          ],
-        ),),
+        body: Container(decoration: BoxDecoration(image:DecorationImage(image: NetworkImage('https://images.unsplash.com/photo-1637775297509-19767f6fc225?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fGJsYWNrJTIwYWVzdGhldGljfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60') ,fit: BoxFit.cover),),
 
           child: Center(
               child :Column(mainAxisAlignment: MainAxisAlignment.center,
@@ -69,31 +63,35 @@ class _myappState extends State<myapp> {
                   TextField(style: TextStyle(color: Colors.white,fontSize: 20,),
                     controller: emailcrl
                     ,onChanged: (val){
-                    err=(val.length>=10)?'pleases enter valid chractor':null;
-                    setState(() {
-                    });
+                      err=(val.length>=10)?'pleases enter valid chractor':null;
+                      setState(() {
+                      });
                     },
-                    decoration: InputDecoration(prefixIcon: Icon(Icons.email,color: Colors.white,),errorText: err2,labelText: 'email',hintText: 'email',hintStyle: TextStyle(color: Colors.white),border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),),
+                    decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10),borderSide: BorderSide(color: Colors.white)),
+                        prefixIcon: Icon(Icons.email,color: Colors.white,),
+                        errorText: err2,labelText: 'email',labelStyle: TextStyle(color: Colors.white),hintText: 'email',
+                        hintStyle: TextStyle(color: Colors.white),border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),),
                   SizedBox(height: 20,),
                   TextField(style: TextStyle(color: Colors.white,fontSize: 20,),
                     controller: password,
                     onChanged: (val){
-                    err2=(val.length>=6)?'only 6 charactor':null;
-                    setState(() {
+                      err2=(val.length>=6)?'only 6 charactor':null;
+                      setState(() {
 
-                    });
+                      });
                     }
                     ,
-                    decoration: InputDecoration(
+                    decoration: InputDecoration(  enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10),borderSide: BorderSide(color: Colors.white)),
                         prefixIcon: Icon(Icons.password,color: Colors.white,),
                         suffixIcon:IconButton(icon: Icon(Icons.visibility),
-                        onPressed: (){
-                          setState(() {
-                            pass=!pass;
-                          });
-                        },)
+                          onPressed: (){
+                            setState(() {
+                              pass=!pass;
+                            });
+                          },)
 
-                        ,labelText: 'password',hintText: 'password',errorText: err,hintStyle: TextStyle(color: Colors.white),border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),)
+                        ,labelText: 'password',hintText: 'password',labelStyle: TextStyle(color: Colors.white),errorText: err,hintStyle: TextStyle(color: Colors.white),border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),)
                   ,SizedBox(height: 20,),
                   ElevatedButton(style: ElevatedButton.styleFrom(primary: Colors.white),onPressed: () {
                     Navigator.push(context,MaterialPageRoute(builder:(context) => reg(),));
@@ -102,6 +100,3 @@ class _myappState extends State<myapp> {
           ),
         ));
   }
-}
-
-
