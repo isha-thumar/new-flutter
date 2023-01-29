@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-
+import 'package:resto/page.dart';
 import 'REG.dart';
 
 void main() {
@@ -95,7 +95,15 @@ class _myappState extends State<myapp> {
                   ,SizedBox(height: 20,),
                   ElevatedButton(style: ElevatedButton.styleFrom(primary: Colors.white),onPressed: () {
                     Navigator.push(context,MaterialPageRoute(builder:(context) => reg(),));
-                  }, child: Text("registration",style: TextStyle(color:Colors.black54),))
+                  }, child: Text("registration",style: TextStyle(color:Colors.black54),)),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(primary: Colors.white),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => app(),));
+                      },
+                      child: Text("login",
+                        style: TextStyle(color: Colors.black54),)),
                 ],)
           ),
         ));
